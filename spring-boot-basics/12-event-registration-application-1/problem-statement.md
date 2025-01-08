@@ -59,7 +59,8 @@ In the application, attendees can register for the ceremony and see the list of 
     4. Do not modify the template code as it may produce inaccurate results. Keeping the original code intact is crucial to ensure correct output.
 
 #Sample output:-
-
+Below is an example of the output for the application:
+![Sample Output](assets/sample-output.png)
 
 
 
