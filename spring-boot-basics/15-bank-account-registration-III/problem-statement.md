@@ -1,60 +1,38 @@
-# Event Registration Application - Bean Lifecycle Implementation  
+# Event Registration Application - Bean Life Cycle Implementation  
 
-## **Problem Statement**  
-In continuation of the **Event Registration Application**, you must now implement **bean lifecycle methods** for the beans in the application. This involves defining custom initialization and destruction methods to manage bean lifecycle events effectively.  
-
----
-
-## **Features & Tasks**  
-
-### 1. Implement **Custom Lifecycle Methods**  
-- Define **init()** and **destroy()** methods in:  
-  - `MyCollege`  
-  - `GraduationCeremonyEvent`  
-
-- Define a **custom init()** method in:  
-  - `StudentAttendee`  
-
-### 2. Modify `applicationContext.xml`  
-- Ensure the lifecycle methods are correctly configured in **`applicationContext.xml`**.  
-
-### 3. Close the Application Context  
-- Properly **close the Spring context** in the `main()` method to trigger the destroy methods.  
-
-### 4. Test the Application  
-- Run the `Main` class to verify that lifecycle methods are executed correctly.  
+## Problem Statement  
+Continuing the Event Registration application, now you must implement bean life cycle methods for the beans in the application.  
 
 ---
 
-## **Guidelines for Submission**  
+## Tasks  
+
+1. Create custom `init()` and `destroy()` methods in the `MyCollege` and `GraduationCeremonyEvent` classes as given in the template.  
+
+2. Create a custom `init()` method in the `StudentAttendee` class as given in the template.  
+
+3. Close the context in the `main()` method.  
+
+4. Make changes in the `applicationContext.xml` file for the methods to work.  
+
+5. Test your application.  
+
+---
+
+## Special Instructions for Submitting the Solution  
 
 1. **Remove the following folders before submission:**  
-   - `target` folder from the root directory.  
-   - `test` folder inside `src`.  
-
-2. **Do Not Change the Following:**  
-   - **Spring Boot version** (`3.0.0`)  
-   - **Java version** (`17`)  
-   - **ApplicationContext.xml location**  
-
-3. **Bean Naming Convention:**  
-   - Follow **camel-case** for bean IDs (e.g., `myCollege`, `graduationCeremonyEvent`).  
-
-4. **Code Integrity:**  
-   - **Do not modify** the provided template code. Keeping the original code intact ensures accurate results.  
+   - `target` folder from the root directory of your project.  
+   - `test` folder from your `src` folder.  
 
 ---
 
-## **Expected Console Output**  
+## Note  
 
-```shell
-Initializing MyCollege bean...  
-Initializing GraduationCeremonyEvent bean...  
-Initializing StudentAttendee bean...  
+1. Don't change the versions of **Spring Boot (3.0.0)** and **Java (17)**. If needed, then install the same.  
 
-Welcome to the Event Registration Application  
-Graduation Ceremony Event is scheduled.  
+2. Do not move the `ApplicationContext.xml` file.  
 
-Destroying MyCollege bean...  
-Destroying GraduationCeremonyEvent bean...  
-Closing the Spring Context.  
+3. Bean ID should be the same as the class name but in **camel-case** version (refer to `ApplicationContext.xml` file).  
+
+4. **Do not modify** the template code as it may produce inaccurate results. Keeping the original code intact is crucial to ensure correct output.  
