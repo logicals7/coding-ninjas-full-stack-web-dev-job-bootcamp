@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <!--types of instructors -->
+    <bean class="com.Krishan.CodingNinjas.Coding.Ninjas.Application.JavaInstructor" id="javaInstructor" scope="singleton" init-method="init" destroy-method="destroy"/>
+    <bean class="com.Krishan.CodingNinjas.Coding.Ninjas.Application.SpringInstructor" id="springInstructor" scope="singleton" init-method="init" destroy-method="destroy"/>
+
+    <!--userList interface with simpleUserList class
+    this list should be prototyped, because there will be two different lists for 2 courses-->
+    <bean class="com.Krishan.CodingNinjas.Coding.Ninjas.Application.SimpleUserList" id="userList" scope="prototype"/>
+
+    <!--types of courses -->
+    <bean class="com.Krishan.CodingNinjas.Coding.Ninjas.Application.PaidCourse" id="javaCourse">
+        <constructor-arg ref="javaInstructor"/>
+        <constructor-arg ref="userList"/>
+    </bean>
+    <bean class="com.Krishan.CodingNinjas.Coding.Ninjas.Application.PaidCourse" id="springCourse">
+        <constructor-arg ref="springInstructor"/>
+        <constructor-arg ref="userList"/>
+    </bean>
+
+    <!-- this bean should be prototype, because as our application is running with the loop infinite times
+    & we are allowing to create users everytime until we quit it, so for each user there will be diff object -->
+    <bean class="com.Krishan.CodingNinjas.Coding.Ninjas.Application.SimpleUser" id="simpleUser" scope="prototype"/>
+</beans>
