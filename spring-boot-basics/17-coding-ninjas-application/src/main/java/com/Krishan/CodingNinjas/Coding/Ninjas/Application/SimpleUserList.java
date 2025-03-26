@@ -1,10 +1,13 @@
 package com.Krishan.CodingNinjas.Coding.Ninjas.Application;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Component
+@Scope("prototype")
 public class SimpleUserList implements UserList{
     ArrayList<User> listOfUsers;
 

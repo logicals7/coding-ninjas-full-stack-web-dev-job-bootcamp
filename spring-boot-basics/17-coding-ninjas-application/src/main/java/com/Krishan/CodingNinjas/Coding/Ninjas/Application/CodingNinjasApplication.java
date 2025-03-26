@@ -39,6 +39,9 @@ public class CodingNinjasApplication {
 		PaidCourse paidCourse = context.getBean(PaidCourse.class);
 		paidCourse.setCourseDetail("This is a test course.");
 		System.out.println(paidCourse.getCourseName());
+		paidCourse.setInstructor("spring");
+		paidCourse.getInstructor().setInstructorDetails("Rahul Mohan", "22");
+		System.out.println(paidCourse.getInstructor().takeClass());
 
 
 

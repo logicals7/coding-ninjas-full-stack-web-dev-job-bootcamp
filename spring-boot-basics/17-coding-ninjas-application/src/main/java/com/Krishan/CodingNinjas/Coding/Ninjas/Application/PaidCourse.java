@@ -3,11 +3,20 @@ package com.Krishan.CodingNinjas.Coding.Ninjas.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * If you want something to change on runtime, the object type given to you should be different.
+ * Suppose we want to finalize the bean on runtime, whether we need the java or spring instructor bean,
+ * In that case we need to add the @Scope annotation to decide if it will be singleton or prototype.
+ * In our case the PaidCourse bean should be Prototyped. For java & spring, we need objects separately.
+ * To dynamically inject the bean at runtime, we need to create two beans here of Instructor type as javaInstructor & springInstructor.
+ */
 @Component
+@Scope("prototype")
 public class PaidCourse implements Course{
     String courseName;
 
@@ -26,9 +35,14 @@ public class PaidCourse implements Course{
      */
     @Autowired
     UserList userList;
-    @Autowired @Qualifier("javaInstructor")
     Instructor courseInstructor;
 
+    //creating two beans
+    @Autowired @Qualifier("javaInstructor")
+    Instructor javaInstructor;
+
+    @Autowired @Qualifier("springInstructor")
+    Instructor springInstructor;
 
     /**
      * //earlier we were doing DI using constructor.
@@ -38,7 +52,6 @@ public class PaidCourse implements Course{
      *         this.userList = userList;
      *     }
      */
-
 
     @Override
     public void setCourseDetail(String courseName) {
@@ -58,5 +71,13 @@ public class PaidCourse implements Course{
     @Override
     public String getCourseName() {
         return this.courseName;
+    }
+
+    //dynamically sets the instructor
+    public void setInstructor(String instructorType){
+        if(instructorType == "spring")
+            this.courseInstructor = this.springInstructor;
+        if (instructorType == "java")
+            this.courseInstructor = this.javaInstructor;
     }
 }
