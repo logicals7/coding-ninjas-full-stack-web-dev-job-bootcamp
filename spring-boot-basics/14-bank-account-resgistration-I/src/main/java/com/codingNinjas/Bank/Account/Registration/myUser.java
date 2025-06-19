@@ -17,13 +17,16 @@ import java.util.List;
 **/
 
 public class myUser implements User{
-
     String name;
-    List<Account> accountList = new ArrayList<>();
+    List<Account> accountList;
+
+    public myUser(){
+        this.accountList = new ArrayList<>();
+    }
 
     @Override
     public void setUserDetails(String name) {
-         this.name = name;
+        this.name = name;
     }
 
     @Override
@@ -38,6 +41,6 @@ public class myUser implements User{
 
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 }

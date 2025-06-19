@@ -2,8 +2,8 @@ package com.codingNinjas.Bank.Account.Registration;
 
 /**
 
-  This class is an implementation of a "Account" Interface based on the selection
- done in the console for account type .You need to complete this class
+  This class is an implementation of a "Account" Interface based on the selection 
+  done in the console for account type .You need to complete this class
   based on the following tasks.
 
      Tasks:
@@ -14,12 +14,11 @@ package com.codingNinjas.Bank.Account.Registration;
 **/
 
 public class currentAccount implements Account{
-
-    double amount = 0;
+    double amount;
 
     @Override
     public String getAccountType() {
-        return "Current Account";
+        return "Current";
     }
 
     @Override

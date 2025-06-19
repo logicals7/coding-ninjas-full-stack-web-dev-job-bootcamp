@@ -13,12 +13,11 @@ package com.codingNinjas.Bank.Account.Registration;
 **/
 
 public class savingsAccount implements Account{
-
-    double amount = 0;
+    double amount;
 
     @Override
     public String getAccountType() {
-        return "Savings Account";
+        return "Savings";
     }
 
     @Override

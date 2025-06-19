@@ -5,15 +5,15 @@
             <!--
 
                  Instruction for writing bean defination:
-
+               
                1. bean id should be same as class name but in camel-case naming convention.
                2. below is an example for reference.
-
+                
                <bean id="pfAccount" class="com.codingNinjas.Bank.Account.Registration.pfAccount">
             -->
+    <bean id = "myUser" class="com.codingNinjas.Bank.Account.Registration.myUser"></bean>
+    <bean id = "currentAccount" class="com.codingNinjas.Bank.Account.Registration.currentAccount" scope="prototype"></bean>
+    <bean id = "savingsAccount" class="com.codingNinjas.Bank.Account.Registration.savingsAccount" scope="prototype"></bean>
 
-    <bean id="myUser" scope="singleton" class="com.codingNinjas.Bank.Account.Registration.myUser"/>
-    <bean id="currentAccount" scope="prototype" class="com.codingNinjas.Bank.Account.Registration.currentAccount"/>
-    <bean id="savingsAccount" scope="prototype" class="com.codingNinjas.Bank.Account.Registration.savingsAccount"/>
 
 </beans>
