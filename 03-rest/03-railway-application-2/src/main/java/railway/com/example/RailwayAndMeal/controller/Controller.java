@@ -2,7 +2,14 @@ package railway.com.example.RailwayAndMeal.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import railway.com.example.RailwayAndMeal.Entity.Ticket;
 import railway.com.example.RailwayAndMeal.service.RailwayService;
 
@@ -28,17 +35,14 @@ public class Controller {
 		return railwayservice.getTicketByPnr(pnr);
 	}
 
-
-	// a. DELETE "/railway/ticket/{pnr}": It deletes a ticket by its pnr.
-	@DeleteMapping("ticket/{pnr}")
+	@DeleteMapping("/ticket/{pnr}")
 	public void deleteTicket(@PathVariable long pnr) {
 		railwayservice.deleteTicketByPnr(pnr);
 	}
 
-
-	// b. PUT "/railway/ticket": It updates a ticket by the given data.
 	@PutMapping("/ticket")
 	public void updateTicket(@RequestBody Ticket ticket) {
 		railwayservice.updateTicket(ticket);
 	}
+
 }

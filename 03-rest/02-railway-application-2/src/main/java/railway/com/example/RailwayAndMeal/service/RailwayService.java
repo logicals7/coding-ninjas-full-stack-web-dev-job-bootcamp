@@ -31,13 +31,20 @@ public class RailwayService {
 
 	// Complete the method body to delete a ticket by PNR.
 	public void deleteTicketByPnr(long pnr) {
-
+		Ticket ticket = getTicketByPnr(pnr);
+		list.remove(ticket);
+		ticketMap.remove(pnr, ticket);
 	}
 
 	
 	// Complete the method body to update an existing ticket.
 	public void updateTicket(Ticket ticket) {
-
+		//get the existing ticket > remove the old data > add new data > update map with new data & existing pnr
+		Ticket existingTicket = getTicketByPnr(ticket.getPnr());
+		list.remove(existingTicket);
+		list.add(ticket);
+		ticketMap.put(ticket.getPnr(), ticket);
 	}
+
 
 }
