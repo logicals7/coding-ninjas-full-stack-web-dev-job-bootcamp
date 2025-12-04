@@ -3,5 +3,7 @@ package Cn.CartApp.dal;
 import Cn.CartApp.entity.Item;
 
 public interface ItemDAL {
-    Item getById(int id);
+    public Item getById(int id);
+    public void addItem(Item item);
+
 }

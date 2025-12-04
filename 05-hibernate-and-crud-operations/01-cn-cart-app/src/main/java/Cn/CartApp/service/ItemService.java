@@ -16,4 +16,9 @@ public class ItemService {
     public Item getItemById(int id) {
         return itemDAL.getById(id);
     }
+
+    @Transactional
+    public void addItem(Item item){
+        itemDAL.addItem(item);
+    }
 }

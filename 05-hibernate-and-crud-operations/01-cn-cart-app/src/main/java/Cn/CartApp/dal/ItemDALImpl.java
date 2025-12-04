@@ -21,4 +21,10 @@ public class ItemDALImpl implements ItemDAL {
         Item item = session.get(Item.class, id);
         return item;
     }
+
+    @Override
+    public void addItem(Item item) {
+        Session session = entityManager.unwrap(Session.class);
+        session.save(item);
+    }
 }
