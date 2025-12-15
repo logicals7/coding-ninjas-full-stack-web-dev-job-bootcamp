@@ -29,4 +29,14 @@ public class EventService {
     public String saveEvent(Event event){
         return eventDAL.save(event);
     }
+
+    @Transactional
+    public String deleteEvent(Long id) {
+        return eventDAL.deleteById(id);
+    }
+
+    @Transactional
+    public String updateEvent(Event event) {
+        return eventDAL.update(event);
+    }
 }
