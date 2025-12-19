@@ -27,6 +27,11 @@ public class Payment {
 	private PaymentDetails paymentDetails;
 
 
+	// Add proper annotation for establishing one-to-many relationship with PaymentReview.
+	@OneToMany(mappedBy = "payment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<PaymentReview> paymentReviews;
+
 	public int getId() {
 		return id;
 	}
@@ -59,13 +64,22 @@ public class Payment {
 		this.paymentDetails = paymentDetails;
 	}
 
+	public List<PaymentReview> getPaymentReviews() {
+		return paymentReviews;
+	}
+
+	public void setPaymentReviews(List<PaymentReview> paymentReviews) {
+		this.paymentReviews = paymentReviews;
+	}
+
 	public Payment() {
 	}
 
-	public Payment(int id, String paymentType, String description, PaymentDetails paymentDetails) {
+	public Payment(int id, String paymentType, String description, PaymentDetails paymentDetails, List<PaymentReview> paymentReviews) {
 		this.id = id;
 		this.paymentType = paymentType;
 		this.description = description;
 		this.paymentDetails = paymentDetails;
+		this.paymentReviews = paymentReviews;
 	}
 }

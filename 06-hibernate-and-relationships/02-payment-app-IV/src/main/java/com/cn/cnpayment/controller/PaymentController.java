@@ -1,5 +1,6 @@
 package com.cn.cnpayment.controller;
 
+import com.cn.cnpayment.entity.PaymentReview;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,6 +70,19 @@ public class PaymentController {
 	public List<Payment> getPaymentsByCurrency(@PathVariable String currency)
 	{
 		return paymentService.getAllPaymentsByCurrency(currency);
+	}
+
+
+	// a. GET /payment/reviews/{paymentId}: It fetches the list of all PaymentReview associated with the given payment Id.
+	@GetMapping("/reviews/{paymentId}")
+	public List<PaymentReview> getPaymentReviews(@PathVariable int paymentId) {
+		return paymentService.getPaymentReviews(paymentId);
+	}
+
+	// a. GET /payment/queryType/{queryType}: It fetches the list of all payment for the given query type.
+	@GetMapping("/queryType/{queryType}")
+	public List<Payment> getPaymentsByQueryType(@PathVariable String queryType) {
+		return paymentService.getAllPaymentsByQueryType(queryType);
 	}
 
 }

@@ -31,7 +31,6 @@ public class PaymentDetailsDALImpl implements PaymentDetailsDAL {
 		return allPaymentDetails;
 	}
 
-
 	@Override
 	public void save(PaymentDetails paymentDetails) {
 		Session session = entityManager.unwrap(Session.class);

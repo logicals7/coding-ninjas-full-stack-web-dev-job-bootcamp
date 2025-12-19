@@ -2,6 +2,7 @@ package com.cn.cnpayment.service;
 
 import jakarta.transaction.Transactional;
 import com.cn.cnpayment.dal.PaymentDAL;
+import com.cn.cnpayment.entity.PaymentReview;
 import com.cn.cnpayment.exception.ElementAlreadyExistException;
 import com.cn.cnpayment.exception.InvalidInputException;
 import com.cn.cnpayment.exception.NotFoundException;
@@ -130,6 +131,54 @@ public class PaymentService {
 	@Transactional
 	public void delete(int id) {
 		paymentDAL.delete(id);
+	}
+
+
+	@Transactional
+	public List<PaymentReview> getPaymentReviews(int paymentId) {
+		/**
+		 1. This method fetches the list of all PaymentReview associated with the given paymentId.
+		 2. It throws NotFoundException if no PaymentReview is found for the given id.
+		 **/
+		if(getPaymentById(paymentId) == null) throw new NotFoundException("Payment does not exist!!");
+		Payment payment = getPaymentById(paymentId); // already throws NotFoundException
+		List<PaymentReview> reviews = payment.getPaymentReviews();
+
+		if (reviews == null || reviews.isEmpty()) {
+			throw new NotFoundException("No payment reviews found for paymentId: " + paymentId);
+		}
+		return reviews;
+	}
+
+	@Transactional
+	public List<Payment> getAllPaymentsByQueryType(String queryType) {
+    /**
+		1. This method fetches the list of all Payment for the given queryType.
+	    2. Only the following query types are allowed if invalid type are passed the method throws InvalidInputException.
+	    3. "Payment Issue","Bank Issue","Merchant Issue" : Both Lowercase and Uppercase formats are accepted.
+	**/
+		List<String> validQueryTypes = new ArrayList<>();
+		Collections.addAll(validQueryTypes, "Payment Issue", "Bank Issue", "Merchant Issue");
+
+		boolean isValid = false;
+		for (String validType : validQueryTypes) {
+			if (validType.equalsIgnoreCase(queryType)) {
+				isValid = true;
+				break;
+			}
+		}
+
+		if (!isValid) {
+			throw new InvalidInputException("Invalid queryType: " + queryType);
+		}
+
+		List<Payment> payments = paymentDAL.getAllPaymentsByQueryType(queryType);
+
+		if (payments.isEmpty()) {
+			throw new NotFoundException("No payments found for queryType: " + queryType);
+		}
+
+		return payments;
 	}
 
 }

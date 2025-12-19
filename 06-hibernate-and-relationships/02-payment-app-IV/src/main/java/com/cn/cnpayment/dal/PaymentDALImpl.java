@@ -1,5 +1,6 @@
 package com.cn.cnpayment.dal;
 
+import com.cn.cnpayment.entity.PaymentReview;
 import com.cn.cnpayment.service.PaymentService;
 import jakarta.persistence.EntityManager;
 import org.hibernate.Session;
@@ -81,7 +82,6 @@ public class PaymentDALImpl implements PaymentDAL{
 		session.update(currentPayment);
 	}
 
-
 	@Override
 	public void updateDescription(int paymentId,String description) {
 		Session session = entityManager.unwrap(Session.class);
@@ -103,5 +103,36 @@ public class PaymentDALImpl implements PaymentDAL{
 		}
 		return paymentsByCurrency;
 	}
+
+
+	/**
+	    Override the PaymentDAL methods and implement them here.
+	**/
+
+	@Override
+	public List<PaymentReview> getPaymentReviews(Integer paymentId) {
+		Session session = entityManager.unwrap(Session.class);
+		Payment payment = session.get(Payment.class, paymentId);
+		return payment.getPaymentReviews();
+	}
+
+	@Override
+	public List<Payment> getAllPaymentsByQueryType(String queryType) {
+		List<Payment> allPayments = getAllPayments();
+		List<Payment> result = new ArrayList<>();
+
+		for (Payment payment : allPayments) {
+			if (payment.getPaymentReviews() != null) {
+				for (PaymentReview review : payment.getPaymentReviews()) {
+					if (review.getQueryType().equalsIgnoreCase(queryType)) {
+						result.add(payment);
+						break; // avoid duplicates
+					}
+				}
+			}
+		}
+		return result;
+	}
+
 
 }

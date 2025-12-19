@@ -24,4 +24,9 @@ public interface PaymentDAL {
 
 	List<Payment> getAllPaymentsByCurrency(String currency);
 
+	// This method fetches the list of all PaymentReview associated with the given payment Id.
+	List<PaymentReview> getPaymentReviews(Integer paymentId);
+
+	// This method fetches the list of all payment for the given query type.
+	List<Payment> getAllPaymentsByQueryType(String queryType);
 }
