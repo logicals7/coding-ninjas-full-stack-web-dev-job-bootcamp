@@ -69,18 +69,6 @@ public class PaymentReviewDALImpl implements PaymentReviewDAL {
 			return allReviews;
 		}
 
-//		@Override
-//		public List<PaymentReview> getByQueryType(String queryType) {
-//			List<PaymentReview> allReviews = getAllPaymentReview();
-//			List<PaymentReview> allReviewsByQueryType = new ArrayList<>();
-//			for(PaymentReview p : allReviews){
-//				if(p.getQueryType().equalsIgnoreCase(queryType)){
-//					allReviewsByQueryType.add(p);
-//				}
-//			}
-//			return allReviewsByQueryType;
-//		}
-
 	@Override
 	public List<PaymentReview> getByQueryType(String queryType) {
 
